@@ -4,26 +4,37 @@
              x:Class="DailyWellness.WellnessScorePage"
              Title="WellnessScorePage">
     <!--Outer Grid layout-->
-    <Grid RowDefinitions="*, auto,*, *"
+    <Grid RowDefinitions="auto,*,2*,4*,*"
           ColumnDefinitions="*,*"
-          RowSpacing="50"
+          RowSpacing="10"
+          ColumnSpacing="10"
           Margin="20"
+          HorizontalOptions="Center"
           >
-        <!--Page Title-->
+        <!--Page Welcoming Title-->
         <Label Grid.Row="0" 
                Grid.Column="0" 
                Grid.ColumnSpan="2"
-               Text="Welcome to the Wellness Center! Please choose your gender"
-               FontSize="Medium"
+               Text="Welcome to the Wellness Center!"
+               FontSize="Large"
                FontAttributes="Bold" 
+
             />
+
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Text="Please choose your gender and use the slider to record your data:"
+               FontSize="Medium"
+               HorizontalOptions="Center"/>
+        
         <!--Male frame-->
-        <Frame Grid.Row="1"
+        <Frame Grid.Row="2"
                Grid.Column="0"
                Padding="20"
                CornerRadius="15"
                HasShadow="True"
-               BorderColor="Grey"
+               BorderColor="#808080"
                x:Name="MaleFrame"
                >
             <VerticalStackLayout Spacing="10" VerticalOptions="Center">
@@ -33,20 +44,21 @@
                        FontSize="Body"/>
             </VerticalStackLayout>
             
+            <!--Tap Gesture-->
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer x:Name="TapMale"
-                          Tapped="TapMale_Tapped"/>
+                <TapGestureRecognizer Tapped="TapMale_Tapped"/>
             </Frame.GestureRecognizers>
         </Frame>
+        
         <!--Female frame-->
-        <Frame Grid.Row="1"
-        Grid.Column="1"
-        Padding="20"
-        CornerRadius="15"
-        HasShadow="True"
-        BorderColor="Grey"
-        x:Name="FemaleFrame"
-        >
+        <Frame Grid.Row="2"
+                Grid.Column="1"
+                Padding="20"
+                CornerRadius="15"
+                HasShadow="True"
+                BorderColor="#808080"
+                x:Name="FemaleFrame"
+                >
             <VerticalStackLayout Spacing="10" VerticalOptions="Center">
                 <Image Source="female.png" HeightRequest="100"/>
                 <Label Text="Female"
@@ -55,21 +67,101 @@
             </VerticalStackLayout>
 
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer x:Name="TapFemale"
-                   Tapped="TapFemale_Tapped"/>
+                <TapGestureRecognizer Tapped="TapFemale_Tapped"/>
             </Frame.GestureRecognizers>
         </Frame>
 
-       
-        <Button Grid.Row="2" 
+        <Grid Grid.Row="3"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              RowDefinitions="*,*,*,*"
+              ColumnDefinitions="*"
+              RowSpacing="20"
+              VerticalOptions="Center">
+
+            <VerticalStackLayout Grid.Row="0"
+                                 Grid.Column="0" 
+                                 Spacing="20">
+                
+                <Label HorizontalOptions="Center"
+                Text="Sleep Hours"
+                FontSize="Body"                  
+                />
+                <Slider x:Name="SliderSleepHours"
+                 ThumbColor="BlueViolet"
+                 Minimum="0"
+                 Maximum="12"
+                 Value="7"                
+                 />
+                <Label x:Name="LbSleepHours"
+                Text="{Binding 
+                       Source={x:Reference SliderSleepHours}, 
+                       Path=Value,
+                       StringFormat='{0:F0}h'}"
+                HorizontalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="2"
+                          Grid.Column="0" 
+                          Spacing="10"
+                          >
+                <Label HorizontalOptions="Center"
+                Text="Stress Level"
+                FontSize="Body"                  
+                />
+                <Slider x:Name="SliderStressLevel"
+                 ThumbColor="BlueViolet"
+                 Minimum="0"
+                 Maximum="10"
+                 Value="4"                
+                 />
+                <Label x:Name="LbStressLevel"
+                Text="{Binding 
+                       Source={x:Reference SliderStressLevel}, 
+                       Path=Value,
+                       StringFormat='{0:F0}'}"
+                HorizontalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                />
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="3"
+                          Grid.Column="0" 
+                          Spacing="10"
+                          >
+                <Label HorizontalOptions="Center"
+                Text="Activity Minutes"
+                FontSize="Body"                  
+                />
+                <Slider x:Name="SliderActivityMinutes"
+                 ThumbColor="BlueViolet"
+                 Minimum="0"
+                 Maximum="120"
+                 Value="30"                
+                 />
+                <Label x:Name="LbActivityMinutes"
+                Text="{Binding 
+                       Source={x:Reference SliderActivityMinutes}, 
+                       Path=Value,
+                       StringFormat='{0:F0}min'}"
+                HorizontalOptions="Center"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                />
+            </VerticalStackLayout>
+        </Grid>
+
+        <Button Grid.Row="4" 
                 Grid.Column="0" 
                 Grid.ColumnSpan="2"
-                Text="Confirm"
+                Text="Submit"
                 FontSize="Medium"
                 FontAttributes="Bold" 
                 HeightRequest="50"
                 WidthRequest="150"
                 Clicked="Button_Clicked"/>
-
     </Grid>
 </ContentPage>

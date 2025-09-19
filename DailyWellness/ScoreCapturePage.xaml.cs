@@ -63,18 +63,22 @@ public partial class ScoreCapturePage : ContentPage
                 if (wellnessScore >= 80 && wellnessScore <= 100)
                 {
                     genderBasedStatus = femaleExcellent;
+                    statusLb = "Excellent";
                 }
                 else if (wellnessScore >= 60 && wellnessScore < 80)
                 {
                     genderBasedStatus = femaleGood;
+                    statusLb = "Good";
                 }
                 else if (wellnessScore >= 40 && wellnessScore < 60)
                 {
                     genderBasedStatus = femaleFair;
+                    statusLb = "Fair";
                 }
                 else
                 {
                     genderBasedStatus = femalePoor;
+                    statusLb = "Poor";
                 }
             }
         }
