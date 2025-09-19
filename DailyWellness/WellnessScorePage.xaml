@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DailyWellness.WellnessScorePage"
+             Title="WellnessScorePage">
+    <!--Outer Grid layout-->
+    <Grid RowDefinitions="*, auto,*, *"
+          ColumnDefinitions="*,*"
+          RowSpacing="50"
+          Margin="20"
+          >
+        <!--Page Title-->
+        <Label Grid.Row="0" 
+               Grid.Column="0" 
+               Grid.ColumnSpan="2"
+               Text="Welcome to the Wellness Center! Please choose your gender"
+               FontSize="Medium"
+               FontAttributes="Bold" 
+            />
+        <!--Male frame-->
+        <Frame Grid.Row="1"
+               Grid.Column="0"
+               Padding="20"
+               CornerRadius="15"
+               HasShadow="True"
+               BorderColor="Grey"
+               x:Name="MaleFrame"
+               >
+            <VerticalStackLayout Spacing="10" VerticalOptions="Center">
+                <Image Source="male.png" HeightRequest="100"/>
+                <Label Text="Male"
+                       HorizontalOptions="Center"
+                       FontSize="Body"/>
+            </VerticalStackLayout>
+            
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer x:Name="TapMale"
+                          Tapped="TapMale_Tapped"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+        <!--Female frame-->
+        <Frame Grid.Row="1"
+        Grid.Column="1"
+        Padding="20"
+        CornerRadius="15"
+        HasShadow="True"
+        BorderColor="Grey"
+        x:Name="FemaleFrame"
+        >
+            <VerticalStackLayout Spacing="10" VerticalOptions="Center">
+                <Image Source="female.png" HeightRequest="100"/>
+                <Label Text="Female"
+                HorizontalOptions="Center"
+                FontSize="Body"/>
+            </VerticalStackLayout>
+
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer x:Name="TapFemale"
+                   Tapped="TapFemale_Tapped"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+       
+        <Button Grid.Row="2" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="2"
+                Text="Confirm"
+                FontSize="Medium"
+                FontAttributes="Bold" 
+                HeightRequest="50"
+                WidthRequest="150"
+                Clicked="Button_Clicked"/>
+
+    </Grid>
+</ContentPage>

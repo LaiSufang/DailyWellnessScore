@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DailyWellness.ScoreCapturePage"
+             Title="ScoreCapturePage">
+    
+    <Grid RowDefinitions="*,2*,2*,2*, *"
+          ColumnDefinitions="*"
+          RowSpacing="50"
+          Margin="20"
+          VerticalOptions="Center">
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Text="Please use the sliders to record your daily wellness score:"
+               FontSize="Body"/>
+
+        <VerticalStackLayout Grid.Row="1"
+                             Grid.Column="0" 
+                            Spacing="20"
+                             >
+            <Label HorizontalOptions="Center"
+                   Text="Sleep Hours"
+                   FontSize="Body"                  
+                   />
+            <Slider x:Name="SliderSleepHours"
+                    ThumbColor="BlueViolet"
+                    Minimum="0"
+                    Maximum="12"
+                    Value="7"                
+                    />
+            <Label x:Name="LbSleepHours"
+                   Text="{Binding 
+                          Source={x:Reference SliderSleepHours}, 
+                          Path=Value,
+                          StringFormat='{0:F0}'}"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   />
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout Grid.Row="2"
+                             Grid.Column="0" 
+                             Spacing="10"
+                             >
+            <Label HorizontalOptions="Center"
+                   Text="Stress Level"
+                   FontSize="Body"                  
+                   />
+            <Slider x:Name="SliderStressLevel"
+                    ThumbColor="BlueViolet"
+                    Minimum="0"
+                    Maximum="10"
+                    Value="4"                
+                    />
+            <Label x:Name="LbStressLevel"
+                   Text="{Binding 
+                          Source={x:Reference SliderStressLevel}, 
+                          Path=Value,
+                          StringFormat='{0:F0}'}"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   />
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="3"
+                             Grid.Column="0" 
+                             Spacing="10"
+                             >
+            <Label HorizontalOptions="Center"
+                   Text="Activity Minutes"
+                   FontSize="Body"                  
+                   />
+            <Slider x:Name="SliderActivityMinutes"
+                    ThumbColor="BlueViolet"
+                    Minimum="0"
+                    Maximum="120"
+                    Value="30"                
+                    />
+            <Label x:Name="LbActivityMinutes"
+                   Text="{Binding 
+                          Source={x:Reference SliderActivityMinutes}, 
+                          Path=Value,
+                          StringFormat='{0:F0}'}"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   />
+        </VerticalStackLayout>
+
+        <Button Grid.Row="4"
+                Grid.Column="0"
+                Text="Get my wellness score"
+                FontSize="Body"
+                FontAttributes="Bold"
+                WidthRequest="250"
+                Clicked="Button_Clicked"/>
+
+
+
+    </Grid>
+</ContentPage>
